@@ -1,0 +1,49 @@
+@media screen and (max-width: 1024px) {
+  body {
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .container {
+    margin: 0px;
+    padding: 54px 15px;
+  }
+  .header {
+    width: 100%;
+    max-width: 100%;
+    justify-content: space-between;
+  }
+  .content {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto auto; 
+    align-items: flex-start;
+    gap: 13px;
+  }
+  .process {
+    margin-top: 5px;
+    margin-bottom: 2px;
+  }
+  .status{
+    margin-bottom: 2px;
+  }
+  .btn-icon{
+    justify-content: flex-start;
+  }
+  .pop-up {
+    top: 50%;
+    left: 50%;
+    width: 370px;
+  }
+  .form-container {
+    padding: 30px 30px;
+  }
+  .header-form {
+    align-items: center;
+    gap: 190px;
+  }
+  .close{
+    margin-bottom: 21px;
+  }
+  .title-form {
+    margin-bottom: 21px;
+  }
+}
