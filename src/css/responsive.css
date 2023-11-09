@@ -14,19 +14,27 @@
   }
   .content {
     grid-template-columns: auto;
-    grid-template-rows: auto auto auto auto auto; 
+    grid-template-rows: auto auto auto auto auto;
     align-items: flex-start;
-    gap: 13px;
+  }
+  .task {
+    margin-bottom: 13px;
+  }
+  .priority{
+    margin-top: 0px;
+    margin-bottom: 18px;
+  }
+  .status {
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
   .process {
     margin-top: 5px;
     margin-bottom: 2px;
   }
-  .status{
-    margin-bottom: 2px;
-  }
-  .btn-icon{
+  .btn-icon {
     justify-content: flex-start;
+    margin-bottom: 25px;
   }
   .pop-up {
     top: 50%;
@@ -40,7 +48,7 @@
     align-items: center;
     gap: 190px;
   }
-  .close{
+  .close {
     margin-bottom: 21px;
   }
   .title-form {

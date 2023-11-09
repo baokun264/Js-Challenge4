@@ -23,6 +23,13 @@ button {
   align-items: center;
   cursor: pointer;
 }
+button:disabled,
+button[disabled] {
+  border-radius: 10px;
+  border: 1px solid #7d8592;
+  background: #7d8592;
+  color: #fff;
+}
 .container {
   width: 100%;
   margin: 50px 338px;
@@ -82,7 +89,7 @@ button {
   margin-bottom: 23px;
   padding-right: 3px;
 }
-.priority{
+.priority {
   margin-top: 22px;
   margin-bottom: 27px;
 }
@@ -122,7 +129,6 @@ button {
   background: rgba(124, 133, 146, 0.14);
   padding: 7px 14px;
   margin: 1px 0px;
-
 }
 .glyphicon {
   font-size: 12px;
@@ -210,8 +216,8 @@ input:focus {
 }
 .btn-add-form {
   border-radius: 10px;
-  border: 1px solid #7d8592;
-  background: #7d8592;
+  border: 1px solid #713fff;
+  background: #713fff;
   padding: 12px 30px;
   color: #fff;
   font-size: 16px;

@@ -3,22 +3,52 @@ var btnEdit = "";
 
 var selectElement = "";
 const priority = ["To Do", "In Process", "Done"];
+
+let btnHigh = document.querySelector(".btn-high");
+let btnMedium = document.querySelector(".btn-medium");
+let btnLow = document.querySelector(".btn-low");
+let btnHighPriority = document.querySelector(".btn-high-priority");
+let btnMediumPriority = document.querySelector(".btn-medium-priority");
+let btnLowPriority = document.querySelector(".btn-low-priority");
 let listItem = JSON.parse(localStorage.getItem("item")) || [];
+
 let item = {};
 
 let inputValue = document.querySelector(".input-add");
-let inputEdit = document.querySelector(".input-edit");
-
+let inputEdit = document.querySelector("#input-edit");
+window.onload = (event) => {
+  let listItem = JSON.parse(localStorage.getItem("item")) || [];
+  listRender(listItem);
+};
+function btnDisable() {
+  if (!btnValue || !inputValue.value) {
+    document.querySelector(".btn-add-form").disabled = true;
+    btnHigh.classList.remove("high-active");
+    btnHighPriority.classList.remove("high-active");
+    btnMedium.classList.remove("medium-active");
+    btnMediumPriority.classList.remove("medium-active");
+    btnLow.classList.remove("low-active");
+    btnLowPriority.classList.remove("low-active");
+  }
+}
 function openPopupAdd() {
   document.getElementById("popup-add").style.display = "block";
   document.getElementById("overlay").style.display = "block";
+  btnDisable();
+}
+function inputFill(indexToDelete, priority) {
+  inputEdit.value = listItem[indexToDelete].value;
+  addClass(priority, btnHighPriority, btnMediumPriority, btnLowPriority);
 }
 function openPopupEdit(event) {
   const listItemElement = event.target.closest(".list");
+  selectElement = listItemElement.getAttribute("id");
+  const indexToDelete = listItem.findIndex((obj) => obj.id === selectElement);
+  inputFill(indexToDelete, listItem[indexToDelete].priority);
   document.getElementById("popup-edit").style.display = "block";
   document.getElementById("overlay").style.display = "block";
-  selectElement = listItemElement.getAttribute("id");
 }
+
 function openPopupDelete(event) {
   const listItemElement = event.target.closest(".list");
   document.getElementById("popup-delete").style.display = "block";
@@ -31,7 +61,7 @@ function closePopup() {
   document.getElementById("popup-delete").style.display = "none";
   document.getElementById("overlay").style.display = "none";
   inputValue.value = "";
-  inputEdit.value = "";
+  btnValue = "";
 }
 function addClass(value, btnHigh, btnMedium, btnLow) {
   switch (value) {
@@ -51,34 +81,29 @@ function addClass(value, btnHigh, btnMedium, btnLow) {
       btnMedium.classList.remove("medium-active");
       break;
     default:
-      alert("Please select a priority");
   }
 }
 function getBtnValue(value) {
   let buttonValue = value.value;
-  let btnHigh = document.querySelector(".btn-high");
-  let btnMedium = document.querySelector(".btn-medium");
-  let btnLow = document.querySelector(".btn-low");
   btnValue = buttonValue;
   addClass(buttonValue, btnHigh, btnMedium, btnLow);
-  if (buttonValue) {
+  if (buttonValue && inputValue.value.trim()) {
     document.querySelector(".btn-add-form").disabled = false;
   }
 }
 function getBtnValueEdit(value) {
   let buttonEdit = value.value;
-  let btnHigh = document.querySelector(".btn-high-priority");
-  let btnMedium = document.querySelector(".btn-medium-priority");
-  let btnLow = document.querySelector(".btn-low-priority");
   btnEdit = buttonEdit;
-  addClass(buttonEdit, btnHigh, btnMedium, btnLow);
+  addClass(buttonEdit, btnHighPriority, btnMediumPriority, btnLowPriority);
   if (buttonEdit) {
     document.querySelector(".btn-edit-form").disabled = false;
   }
 }
 function inputChange(event) {
-  if (event.target.value) {
+  if (event.target.value.trim() || btnValue) {
     document.querySelector(".btn-add-form").disabled = false;
+  } else {
+    document.querySelector(".btn-add-form").disabled = true;
   }
 }
 function listRender(data) {
@@ -126,7 +151,6 @@ function listRender(data) {
       </div>
     `;
     ul.appendChild(li);
-    console.log("icon" + icon);
   }
 }
 function newElement(event) {
@@ -173,9 +197,7 @@ function status(event) {
       break;
   }
 }
-window.onload = (event) => {
-  listRender(listItem);
-};
+
 function deleteItem(event) {
   const element = document.getElementById(`${selectElement}`);
   element.remove();

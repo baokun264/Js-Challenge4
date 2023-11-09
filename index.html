@@ -13,7 +13,7 @@
 <body>
     <div class="container" id="container">
         <div class="header">
-            <p class="title-header">Task List</p>
+            <h1 class="title-header">Task List</h1>
             <button class="btn-add" onclick="openPopupAdd()"><img src="./public/images/plus-icon.svg" alt="icon add">
                 <span class="btn-text">Add Task</span>
             </button>
@@ -27,7 +27,7 @@
         <div class="pop-up pop-up-add " id="popup-add">
             <div class="form-container">
                 <div class="header-form">
-                    <h1 class="title-form">Add Task</h1>
+                    <p class="title-form">Add Task</p>
                     <button class="close" onclick="closePopup()">
                         <img src="./public/images/close-icon.svg" alt=" close button">
                     </button>
@@ -48,14 +48,14 @@
                     <button class="btn-low " value="Low" onclick="getBtnValue(this)">Low</button>
                 </div>
                 <div class="footer-form">
-                    <button class="btn-add-form" onclick="newElement(event)">Add</button>
+                    <button class="btn-add-form" onclick="newElement(event)" disabled>Add</button>
                 </div>
             </div>
         </div>
         <div class=" pop-up pop-up-edit" id="popup-edit">
             <div class="form-container">
                 <div class="header-form">
-                    <h1 class="title-form">Edit Task</h1>
+                    <p class="title-form">Edit Task</p>
                     <button class="close" onclick="closePopup()">
                         <img src="./public/images/close-icon.svg" alt=" close button">
                     </button>
@@ -64,7 +64,7 @@
                     Task
                 </p>
                 <div class="input-container">
-                    <input type="text" class="input-add input-edit" placeholder="Type your task here...">
+                    <input type="text" id="input-edit" class="input-add input-edit" placeholder="Type your task here..." value="">
                 </div>
                 <p class="title-task-form">
                     Priority
