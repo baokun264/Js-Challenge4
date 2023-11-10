@@ -95,15 +95,21 @@ function getBtnValueEdit(value) {
   let buttonEdit = value.value;
   btnEdit = buttonEdit;
   addClass(buttonEdit, btnHighPriority, btnMediumPriority, btnLowPriority);
-  if (buttonEdit) {
-    document.querySelector(".btn-edit-form").disabled = false;
-  }
 }
 function inputChange(event) {
-  if (event.target.value.trim() || btnValue) {
+  const limit = event.target.value.trim().length;
+  if (event.target.value.trim() && btnValue && limit <= 200) {
     document.querySelector(".btn-add-form").disabled = false;
   } else {
     document.querySelector(".btn-add-form").disabled = true;
+  }
+}
+function inputEditChange(event) {
+  const limit = event.target.value.trim().length;
+  if (limit > 200) {
+    document.querySelector('.btn-edit-form').disabled =true;
+  } else {
+    document.querySelector(".btn-edit-form").disabled = false;
   }
 }
 function listRender(data) {
@@ -158,10 +164,7 @@ function newElement(event) {
   let li = document.createElement("li");
   li.id = "item_" + uniqueId;
 
-  if (inputValue.value === "" || btnValue === "") {
-    event.target.disabled = true;
-    alert("You must write something!");
-  } else {
+  if (inputValue.value && btnValue && inputValue.value.length <= 200) {
     document.querySelector(".btn-add-form").disabled = false;
     item = {
       id: li.id,
@@ -173,6 +176,9 @@ function newElement(event) {
     localStorage.setItem("item", JSON.stringify(listItem));
     listRender(listItem);
     closePopup();
+  } else {
+    event.target.disabled = true;
+    alert("You must write something!");
   }
 }
 function status(event) {
@@ -212,6 +218,7 @@ function deleteItem(event) {
 }
 function editItem(event) {
   const indexToDelete = listItem.findIndex((obj) => obj.id === selectElement);
+
   if (inputEdit.value.trim()) {
     if (indexToDelete !== -1) {
       listItem[indexToDelete].value = inputEdit.value;
