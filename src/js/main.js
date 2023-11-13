@@ -27,11 +27,12 @@ function btnDisable() {
     btnHighPriority.classList.remove("high-active");
     btnMedium.classList.remove("medium-active");
     btnMediumPriority.classList.remove("medium-active");
-    btnLow.classList.remove("low-active");
+    btnLow.classList.add("low-active");
     btnLowPriority.classList.remove("low-active");
   }
 }
 function openPopupAdd() {
+  btnValue = "Low";
   document.getElementById("popup-add").style.display = "block";
   document.getElementById("overlay").style.display = "block";
   btnDisable();
@@ -107,7 +108,7 @@ function inputChange(event) {
 function inputEditChange(event) {
   const limit = event.target.value.trim().length;
   if (limit > 200) {
-    document.querySelector('.btn-edit-form').disabled =true;
+    document.querySelector(".btn-edit-form").disabled = true;
   } else {
     document.querySelector(".btn-edit-form").disabled = false;
   }

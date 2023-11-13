@@ -38,7 +38,7 @@ button[disabled] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 25px;
+  margin-bottom: 40px;
 }
 .title-header {
   color: #0a1629;
@@ -46,7 +46,7 @@ button[disabled] {
   font-style: normal;
   font-weight: 600;
   line-height: 36px; /* 100% */
-  padding-right: 6.5px;
+  padding-right: 11px;
 }
 .btn-add {
   border-radius: 14px;
@@ -90,6 +90,9 @@ button[disabled] {
   padding-right: 3px;
 }
 .priority {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
   margin-top: 22px;
   margin-bottom: 27px;
 }
