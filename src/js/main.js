@@ -176,7 +176,7 @@ function newElement(event) {
       priority: btnValue,
       status: priority[0],
     };
-    listItem.push(item);
+    listItem.unshift(item);
     localStorage.setItem("item", JSON.stringify(listItem));
     listRender(listItem);
     closePopup();
