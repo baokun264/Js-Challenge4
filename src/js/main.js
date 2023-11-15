@@ -41,7 +41,7 @@ function openPopupAdd() {
 }
 function inputFill(indexToDelete, priority) {
   inputEdit.value = listItem[indexToDelete].value;
-  btnEdit = listItem[indexToDelete].value;
+  btnEdit = listItem[indexToDelete].priority;
   addClass(priority, btnHighPriority, btnMediumPriority, btnLowPriority);
 }
 function openPopupEdit(event) {
@@ -143,7 +143,7 @@ function listRender(data) {
               </p>
             </div>
             <div class="process">
-              <button class="btn-prc" onclick="status(event)"><span class="glyphicon">${data[i].status}</span></button>
+              <button class="btn-prc" onclick="status(event)"><span class="glyphicon ${icon}">${data[i].status}</span></button>
             </div>
             <button class="status todo-status">
               <img src="./public/images/icon-${icon}.svg" alt="${icon}" />
