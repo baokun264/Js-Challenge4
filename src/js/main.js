@@ -3,6 +3,8 @@ var btnEdit = "";
 
 var selectElement = "";
 const priority = ["To Do", "In Process", "Done"];
+const btnAdd = document.querySelector(".btn-add-form");
+const btnEditForm = document.querySelector(".btn-edit-form");
 
 let btnHigh = document.querySelector(".btn-high");
 let btnMedium = document.querySelector(".btn-medium");
@@ -34,10 +36,12 @@ function btnDisable() {
 function openPopupAdd() {
   document.getElementById("popup-add").style.display = "block";
   document.getElementById("overlay").style.display = "block";
+  inputValue.addEventListener("input", inputChange);
   btnDisable();
 }
 function inputFill(indexToDelete, priority) {
   inputEdit.value = listItem[indexToDelete].value;
+  btnEdit = listItem[indexToDelete].priority;
   addClass(priority, btnHighPriority, btnMediumPriority, btnLowPriority);
 }
 function openPopupEdit(event) {
@@ -47,6 +51,8 @@ function openPopupEdit(event) {
   inputFill(indexToDelete, listItem[indexToDelete].priority);
   document.getElementById("popup-edit").style.display = "block";
   document.getElementById("overlay").style.display = "block";
+  btnEditForm.disabled = false;
+  inputEdit.addEventListener("input", inputChange);
 }
 
 function openPopupDelete(event) {
@@ -87,7 +93,11 @@ function getBtnValue(value) {
   let buttonValue = value.value;
   btnValue = buttonValue;
   addClass(buttonValue, btnHigh, btnMedium, btnLow);
-  if (buttonValue && inputValue.value.trim()) {
+  if (
+    buttonValue &&
+    inputValue.value.trim().length > 0 &&
+    inputValue.value.trim().length <= 200
+  ) {
     document.querySelector(".btn-add-form").disabled = false;
   }
 }
@@ -98,18 +108,12 @@ function getBtnValueEdit(value) {
 }
 function inputChange(event) {
   const limit = event.target.value.trim().length;
-  if (event.target.value.trim() && btnValue && limit <= 200) {
-    document.querySelector(".btn-add-form").disabled = false;
+  if (event.target.value.trim() && (btnValue || btnEdit) && limit <= 200) {
+    btnAdd.disabled = false;
+    btnEditForm.disabled = false;
   } else {
-    document.querySelector(".btn-add-form").disabled = true;
-  }
-}
-function inputEditChange(event) {
-  const limit = event.target.value.trim().length;
-  if (limit > 200) {
-    document.querySelector('.btn-edit-form').disabled =true;
-  } else {
-    document.querySelector(".btn-edit-form").disabled = false;
+    btnAdd.disabled = true;
+    btnEditForm.disabled = true;
   }
 }
 function listRender(data) {
@@ -139,7 +143,7 @@ function listRender(data) {
               </p>
             </div>
             <div class="process">
-              <button class="btn-prc" onclick="status(event)"><span class="glyphicon">${data[i].status}</span></button>
+              <button class="btn-prc" onclick="status(event)"><span class="glyphicon ${icon}">${data[i].status}</span></button>
             </div>
             <button class="status todo-status">
               <img src="./public/images/icon-${icon}.svg" alt="${icon}" />
@@ -172,13 +176,12 @@ function newElement(event) {
       priority: btnValue,
       status: priority[0],
     };
-    listItem.push(item);
+    listItem.unshift(item);
     localStorage.setItem("item", JSON.stringify(listItem));
     listRender(listItem);
     closePopup();
   } else {
     event.target.disabled = true;
-    alert("You must write something!");
   }
 }
 function status(event) {
@@ -218,7 +221,6 @@ function deleteItem(event) {
 }
 function editItem(event) {
   const indexToDelete = listItem.findIndex((obj) => obj.id === selectElement);
-
   if (inputEdit.value.trim()) {
     if (indexToDelete !== -1) {
       listItem[indexToDelete].value = inputEdit.value;

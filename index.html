@@ -13,17 +13,17 @@
 <body>
     <div class="container" id="container">
         <div class="header">
-            <h1 class="title-header">Task List</h1>
+            <div class="title-header">Task List</div>
             <button class="btn-add" onclick="openPopupAdd()"><img src="./public/images/plus-icon.svg" alt="icon add">
                 <span class="btn-text">Add Task</span>
             </button>
         </div>
-        <div class="list">
+        <div class="list-task">
             <ul class="list-item">
                 <li></li>
             </ul>
         </div>
-        <div id="overlay" class="overlay"></div>
+        <div id="overlay" class="overlay" onclick="closePopup()"></div>
         <div class="pop-up pop-up-add " id="popup-add">
             <div class="form-container">
                 <div class="header-form">
@@ -36,16 +36,15 @@
                     Task
                 </p>
                 <div class="input-container">
-                    <input type="text" class="input-add" onchange="inputChange(event)"
-                        placeholder="Type your task here...">
+                    <input type="text" class="input-add" placeholder="Type your task here...">
                 </div>
                 <p class="title-task-form">
                     Priority
                 </p>
                 <div class="list-btn" onclick="">
-                    <button class="btn-high " value="High" onclick="getBtnValue(this)">High</button>
-                    <button class="btn-medium " value="Medium" onclick="getBtnValue(this)">Medium</button>
-                    <button class="btn-low " value="Low" onclick="getBtnValue(this)">Low</button>
+                    <button class="btn btn-high " value="High" onclick="getBtnValue(this)">High</button>
+                    <button class="btn btn-medium " value="Medium" onclick="getBtnValue(this)">Medium</button>
+                    <button class="btn btn-low " value="Low" onclick="getBtnValue(this)">Low</button>
                 </div>
                 <div class="footer-form">
                     <button class="btn-add-form" onclick="newElement(event)" disabled>Add</button>
@@ -64,17 +63,18 @@
                     Task
                 </p>
                 <div class="input-container">
-                    <input type="text" id="input-edit" class="input-add input-edit" placeholder="Type your task here..." value="" onchange="inputEditChange(event)">
+                    <input type="text" id="input-edit" class="input-add input-edit" placeholder="Type your task here..."
+                        value="">
                 </div>
                 <p class="title-task-form">
                     Priority
                 </p>
                 <div class="list-btn" onclick="">
-                    <button class="btn-high btn-high-priority" value="High"
+                    <button class="btn btn-high btn-high-priority" value="High"
                         onclick="getBtnValueEdit(this)">High</button>
-                    <button class="btn-medium btn-medium-priority" value="Medium"
+                    <button class="btn btn-medium btn-medium-priority" value="Medium"
                         onclick="getBtnValueEdit(this)">Medium</button>
-                    <button class="btn-low btn-low-priority" value="Low" onclick="getBtnValueEdit(this)">Low</button>
+                    <button class="btn btn-low btn-low-priority" value="Low" onclick="getBtnValueEdit(this)">Low</button>
                 </div>
                 <div class="footer-form">
                     <button class="btn-edit-form" onclick="editItem(event)">Edit</button>
@@ -85,7 +85,7 @@
             <div class="form-container question">
                 <p class="text-question"> Are you sure you want to delete this task? </p>
                 <div class="group-btn">
-                    <button class="btn-delete-form btn-edit-form" onclick="deleteItem(event)">Delete</button>
+                    <button class="btn-delete-form btn-edit-form" onclick="deleteItem(event)"><span class="delete-text">Delete</span></button>
                     <button class="btn-cancel btn-edit-form" onclick="closePopup()">Cancel</button>
                 </div>
             </div>

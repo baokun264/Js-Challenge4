@@ -3,6 +3,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: Poppins;
 }
 body {
   font-family: "Poppins", sans-serif;
@@ -11,7 +12,7 @@ body {
   margin: auto;
   box-sizing: border-box;
   width: 1366px;
-  background-color: #f0f2f3;
+  background-color: #f0f2f5;
 }
 ul {
   list-style-type: none;
@@ -21,6 +22,7 @@ button {
   border: none;
   display: flex;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
 }
 button:disabled,
@@ -36,16 +38,15 @@ button[disabled] {
 }
 .header {
   display: flex;
-  justify-content: space-between;
+  gap: 53.91%;
   align-items: center;
-  margin-bottom: 25px;
+  margin-bottom: 40px;
 }
 .title-header {
   color: #0a1629;
   font-size: 36px;
-  font-style: normal;
   font-weight: 600;
-  line-height: 36px; /* 100% */
+  line-height: 36px;
   padding-right: 6.5px;
 }
 .btn-add {
@@ -53,29 +54,34 @@ button[disabled] {
   background: #713fff;
   box-shadow: 0px 6px 12px 0px rgba(113, 63, 255, 0.25);
   padding: 13px 30px;
-  font-size: 16px;
   border: none;
 }
 .btn-text {
-  margin-left: 8px;
+  margin-left: 12px;
   color: #fff;
   text-align: center;
   font-family: Arial;
   font-weight: 700;
+  font-size: 16px;
+  line-height: normal;
+  margin-top: -1px;
+}
+.list-task {
+  max-width: 690px;
 }
 .list {
-  max-width: 690px;
   margin: 15px 0px;
 }
 .content {
   background: #fff;
   border-radius: 24px;
   box-shadow: 0px 6px 58px 0px rgba(196, 203, 214, 0.11);
-  padding: 0px 30px 0px 30px;
+  padding: 0px 30px;
   display: grid;
-  grid-template-columns: 27.1% 9.9% 15% 4% 10%;
-  gap: auto;
-  justify-content: space-between;
+  grid-template-columns: 36% 18% 23.2% 12.8% 10%;
+}
+.status {
+  margin-right: 57px;
 }
 .title {
   color: #91929e;
@@ -87,15 +93,21 @@ button[disabled] {
 .task {
   margin-top: 19px;
   margin-bottom: 23px;
-  padding-right: 3px;
+  padding-right: 30px;
 }
 .priority {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
   margin-top: 22px;
   margin-bottom: 27px;
+  margin-right: 71px;
 }
 .title-task {
   font-size: 14px;
   margin-bottom: 8px;
+  margin-right: 165px;
 }
 .task-description {
   color: #0a1629;
@@ -107,7 +119,6 @@ button[disabled] {
 }
 .important {
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
   line-height: 14px;
   text-transform: capitalize;
@@ -129,13 +140,17 @@ button[disabled] {
   background: rgba(124, 133, 146, 0.14);
   padding: 7px 14px;
   margin: 1px 0px;
+  margin-right: 53px;
 }
 .glyphicon {
-  font-size: 12px;
-  font-style: normal;
+  font-size: 12px !important;
+  font-family: Arial;
   font-weight: 400;
-  padding: 0.5px;
+  padding: 0 0.8px;
   text-wrap: nowrap;
+}
+.in-progress {
+  padding: 0 2.3px;
 }
 .pop-up {
   display: none;
@@ -173,6 +188,9 @@ button[disabled] {
   font-weight: 400;
   line-height: 22px;
 }
+.close {
+  margin-bottom: 11px;
+}
 .title-form {
   color: #0a1629;
   font-size: 22px;
@@ -195,24 +213,34 @@ input:focus {
   display: flex;
   gap: 12px;
   margin-bottom: 50px;
+  max-height: 30px;
+}
+.btn {
+  font-size: 14px;
+  font-weight: 400;
+  width: 90px;
 }
 .btn-high {
   border-radius: 10px;
   border: 1px solid #f73446;
   color: #f73446;
-  padding: 7px 30.5px;
+  padding: 7px 0;
+  line-height: 16px;
+  font-weight: 400;
 }
 .btn-medium {
   border-radius: 10px;
   border: 1px solid #ffbd21;
   color: #ffbd21;
-  padding: 7px 20.5px;
+  padding: 7px 0;
+  font-weight: 400;
 }
 .btn-low {
   border-radius: 10px;
   border: 1px solid #0ac947;
   color: #0ac947;
-  padding: 7px 32px;
+  padding: 7px 0;
+  font-weight: 400;
 }
 .btn-add-form {
   border-radius: 10px;
@@ -221,7 +249,6 @@ input:focus {
   padding: 12px 30px;
   color: #fff;
   font-size: 16px;
-  font-style: normal;
   font-weight: 600;
   line-height: 16px;
 }
@@ -242,11 +269,10 @@ input:focus {
 .text-question {
   color: #0a1629;
   text-align: center;
-  font-family: Poppins;
   font-size: 22px;
   font-style: normal;
   font-weight: 600;
-  line-height: 36px; /* 163.636% */
+  line-height: 36px;
 }
 .btn-cancel {
   border-radius: 10px;
@@ -254,7 +280,6 @@ input:focus {
   background-color: transparent;
   color: #7d8592;
   font-weight: 500;
-  font-family: Poppins;
   line-height: 16px;
 }
 .group-btn {
@@ -267,9 +292,6 @@ input:focus {
   justify-content: flex-end;
   gap: 20px;
 }
-.show {
-  display: block !important;
-}
 .overlay {
   display: none;
   position: fixed;
@@ -277,7 +299,7 @@ input:focus {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 1;
 }
 .high-active {
@@ -292,6 +314,9 @@ input:focus {
   background-color: #0ac947;
   color: #ffff;
 }
+.delete-text {
+  padding: 0 0.5px;
+}
 .High {
   color: #f73446;
 }
@@ -301,12 +326,3 @@ input:focus {
 .Low {
   color: #0ac947;
 }
-/* .todo-status{
-  display: block;
-}
-.inprogress-status{
-  display: none;
-}
-.done-status{
-  display: none;
-} */
